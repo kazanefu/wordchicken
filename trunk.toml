@@ -1,6 +1,0 @@
-[build]
-dist = "dist"
-
-[[copy]]
-source = "js"
-target = "js"
