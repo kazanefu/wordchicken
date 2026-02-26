@@ -6,6 +6,7 @@ static WORDS_CSV: &str = include_str!("words.csv");
 fn main() {
     App::new()
         .add_plugins(DefaultPlugins)
+        .add_plugins(util::words::WordPlugin)
         .add_systems(Startup, setup)
         .run();
 }
