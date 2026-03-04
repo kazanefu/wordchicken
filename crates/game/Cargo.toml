@@ -21,3 +21,5 @@ anyhow = "1.0"
 bincode = "1"
 futures-lite = "2"
 directories = "6.0.0"
+
+words_lib = {path = "../words_lib"}

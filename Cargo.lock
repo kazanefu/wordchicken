@@ -2953,6 +2953,7 @@ dependencies = [
  "serde",
  "serde_json",
  "tokenizers",
+ "words_lib",
 ]
 
 [[package]]
@@ -4003,6 +4004,19 @@ checksum = "670fdfda89751bc4a84ac13eaa63e205cf0fd22b4c9a5fbfa085b63c1f1d3a30"
 [[package]]
 name = "make_embeddings"
 version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bincode",
+ "candle-core",
+ "candle-nn",
+ "candle-transformers",
+ "csv",
+ "futures-lite",
+ "hf-hub",
+ "serde",
+ "serde_json",
+ "tokenizers",
+]
 
 [[package]]
 name = "malloc_buf"
@@ -7693,6 +7707,10 @@ dependencies = [
  "unicode-xid",
  "wasmparser",
 ]
+
+[[package]]
+name = "words_lib"
+version = "0.1.0"
 
 [[package]]
 name = "writeable"
