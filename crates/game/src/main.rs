@@ -4,6 +4,7 @@ mod util;
 static WORDS_CSV: &str = include_str!("words.csv");
 
 fn main() {
+    println!("{}",WORDS_CSV);
     App::new()
         .add_plugins(DefaultPlugins)
         .add_plugins(util::words::WordPlugin)

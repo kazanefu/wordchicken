@@ -1591,6 +1591,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "bincode"
+version = "1.3.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b1f45e9417d87227c7a56d22e471c6206462cba514c7590c09aff4cf6d1ddcad"
+dependencies = [
+ "serde",
+]
+
+[[package]]
 name = "bindgen"
 version = "0.72.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2418,6 +2427,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "directories"
+version = "6.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "16f5094c54661b38d03bd7e50df373292118db60b585c08a411c6d840017fe7d"
+dependencies = [
+ "dirs-sys",
+]
+
+[[package]]
 name = "dirs"
 version = "6.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2915,6 +2933,26 @@ dependencies = [
  "memchr",
  "pin-project-lite",
  "slab",
+]
+
+[[package]]
+name = "game"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bevy",
+ "bincode",
+ "candle-core",
+ "candle-nn",
+ "candle-transformers",
+ "csv",
+ "directories",
+ "futures-lite",
+ "hf-hub",
+ "rand 0.10.0",
+ "serde",
+ "serde_json",
+ "tokenizers",
 ]
 
 [[package]]
@@ -7650,23 +7688,6 @@ dependencies = [
  "serde_json",
  "unicode-xid",
  "wasmparser",
-]
-
-[[package]]
-name = "wordchicken"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "bevy",
- "candle-core",
- "candle-nn",
- "candle-transformers",
- "csv",
- "hf-hub",
- "rand 0.10.0",
- "serde",
- "serde_json",
- "tokenizers",
 ]
 
 [[package]]
