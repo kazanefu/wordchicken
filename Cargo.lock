@@ -4013,9 +4013,12 @@ dependencies = [
  "csv",
  "futures-lite",
  "hf-hub",
+ "indicatif",
+ "rayon",
  "serde",
  "serde_json",
  "tokenizers",
+ "words_lib",
 ]
 
 [[package]]

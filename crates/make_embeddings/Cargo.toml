@@ -16,3 +16,8 @@ hf-hub = "0.5.0"
 anyhow = "1.0"
 bincode = "1"
 futures-lite = "2"
+
+rayon = "1.11.0"
+indicatif = "0.18.4"
+
+words_lib = {path = "../words_lib"}

@@ -1,9 +1,6 @@
-use candle_core::{Device, Tensor};
+use candle_core::Device;
 use candle_nn::VarBuilder;
 use candle_transformers::models::bert::{BertModel, Config};
-use csv::ReaderBuilder;
-use serde::{Deserialize, Serialize};
-use std::path::Path;
 use std::sync::Arc;
 use tokenizers::Tokenizer;
 
