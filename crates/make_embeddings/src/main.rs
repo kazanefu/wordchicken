@@ -8,7 +8,7 @@ use rayon::prelude::*;
 static WORDS_CSV: &str = include_str!("words.csv");
 
 fn main() -> anyhow::Result<()> {
-    println!("start make embedding.bin");
+    println!("Start making a embedding.bin");
     let model = EmbeddingModel::default();
     let strings = load_words(WORDS_CSV);
     let pb = ProgressBar::new(strings.len() as u64);

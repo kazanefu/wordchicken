@@ -1,12 +1,6 @@
 use super::embedding_model::EmbeddingModel;
-use candle_core::{Device, Tensor};
-use candle_nn::VarBuilder;
-use candle_transformers::models::bert::{BertModel, Config};
-use csv::ReaderBuilder;
-use serde::{Deserialize, Serialize};
-use std::path::Path;
-use std::sync::Arc;
-use tokenizers::Tokenizer;
+use candle_core::Tensor;
+
 
 pub fn str_to_embedding(text: &str, model_res: &EmbeddingModel) -> Vec<f32> {
     let tokenizer = &model_res.tokenizer;

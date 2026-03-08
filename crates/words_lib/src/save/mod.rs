@@ -1,6 +1,4 @@
-use candle_nn::embedding;
 use serde::{Deserialize,Serialize};
-use std::path::Path;
 // ==========================
 // Save / Load
 // ==========================
