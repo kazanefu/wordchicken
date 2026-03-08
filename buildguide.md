@@ -1,0 +1,1 @@
+ビルドするときは`cl.exe`のパスのために`Developer Command Prompt`を使ってください

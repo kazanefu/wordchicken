@@ -25,3 +25,48 @@ pub fn str_to_embedding(text: &str, model_res: &EmbeddingModel) -> Vec<f32> {
 
     normalized.to_vec2::<f32>().unwrap()[0].clone()
 }
+
+pub fn batch_embedding(texts: &[&str], model_res: &EmbeddingModel) -> Vec<Vec<f32>>{
+    let tokenizer = &model_res.tokenizer;
+    let model = &model_res.model;
+    let device = &model_res.device;
+
+    let encodings = tokenizer.encode_batch(texts.to_vec(), true).expect("fail to encoding");
+
+    let max_len = encodings.iter().map(|e|e.len()).max().expect("max DNE");
+    
+    let mut ids = Vec::new();
+    let mut masks = Vec::new();
+    let mut types = Vec::new();
+
+    for e in encodings{
+        let mut id = e.get_ids().to_vec();
+        let mut mask = e.get_attention_mask().to_vec();
+        let mut typ = e.get_type_ids().to_vec();
+
+        id.resize(max_len,0);
+        mask.resize(max_len, 0);
+        typ.resize(max_len, 0);
+        
+        ids.push(id);
+        masks.push(mask);
+        types.push(typ);
+    }
+
+    let token_ids = Tensor::new(ids, device).unwrap();
+    let token_type_ids = Tensor::new(types, device).unwrap();
+    let attention_mask = Tensor::new(masks, device).unwrap();
+
+    let embeddings = model
+        .forward(&token_ids, &token_type_ids, Some(&attention_mask))
+        .unwrap();
+    let (_b, n_tokens, _h) = embeddings.dims3().unwrap();
+
+    let mean = (embeddings.sum(1).unwrap() / (n_tokens as f64)).unwrap();
+
+    let norm = mean.sqr().unwrap().sum_all().unwrap().sqrt().unwrap();
+    let normalized = mean.broadcast_div(&norm).unwrap();
+
+    normalized.to_vec2::<f32>().unwrap()
+
+}
