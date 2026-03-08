@@ -20,6 +20,11 @@ impl EmbeddingModel {
         } else {
             Device::Cpu
         };
+        if let Device::Cuda(_) = device {
+            println!("GPU active")
+        } else {
+            println!("CPU active");
+        }
         let api = hf_hub::api::sync::Api::new().expect("fail to get api!");
         let repo = api.model("sentence-transformers/all-MiniLM-L6-v2".to_string());
 
@@ -51,7 +56,7 @@ impl EmbeddingModel {
     }
 }
 
-impl Default for EmbeddingModel{
+impl Default for EmbeddingModel {
     fn default() -> Self {
         Self::new()
     }
