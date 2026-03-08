@@ -4013,9 +4013,12 @@ dependencies = [
  "csv",
  "futures-lite",
  "hf-hub",
+ "indicatif",
+ "rayon",
  "serde",
  "serde_json",
  "tokenizers",
+ "words_lib",
 ]
 
 [[package]]
@@ -7711,6 +7714,19 @@ dependencies = [
 [[package]]
 name = "words_lib"
 version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bincode",
+ "candle-core",
+ "candle-nn",
+ "candle-transformers",
+ "csv",
+ "futures-lite",
+ "hf-hub",
+ "serde",
+ "serde_json",
+ "tokenizers",
+]
 
 [[package]]
 name = "writeable"
