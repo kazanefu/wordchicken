@@ -21,7 +21,7 @@ fn embedding_with_batch() -> Words {
     let model = EmbeddingModel::default();
     let strings = load_words(WORDS_CSV);
     let pb = ProgressBar::new(strings.len() as u64);
-    let batch = 64;
+    let batch = 512;
     let words = strings
         .par_chunks(batch)
         .flat_map(|chunk| {
