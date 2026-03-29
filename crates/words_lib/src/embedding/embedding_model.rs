@@ -4,7 +4,7 @@ use candle_transformers::models::bert::{BertModel, Config};
 use std::sync::Arc;
 use tokenizers::Tokenizer;
 
-/// 
+/// model to create embedding
 /// This model include which Model / Tokenizer / Device.
 #[derive(Clone)]
 pub struct EmbeddingModel {
