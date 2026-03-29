@@ -4,6 +4,8 @@ use candle_transformers::models::bert::{BertModel, Config};
 use std::sync::Arc;
 use tokenizers::Tokenizer;
 
+/// 
+/// This model include which Model / Tokenizer / Device.
 #[derive(Clone)]
 pub struct EmbeddingModel {
     pub model: Arc<BertModel>,
@@ -53,6 +55,14 @@ impl EmbeddingModel {
             tokenizer: Arc::new(tokenizer),
             device,
         }
+    }
+    pub fn batch_embedding(&self,texts:&[&str])->Vec<Vec<f32>>{
+        use super::words_to_vec;
+        words_to_vec::batch_embedding(texts, self)
+    }
+    pub fn str_to_embedding(&self,text:&str)->Vec<f32>{
+        use super::words_to_vec;
+        words_to_vec::str_to_embedding(text, self)
     }
 }
 
