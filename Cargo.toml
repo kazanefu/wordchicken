@@ -1,5 +1,5 @@
 [workspace]
-members = [
+members = ["crates/cli_game",
     "crates/game", "crates/make_embeddings", "crates/words_lib",
 ]
 resolver = "2"
