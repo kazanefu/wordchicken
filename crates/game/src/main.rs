@@ -8,6 +8,7 @@ static EMBEDDINGS_BYTES: &[u8] = include_bytes!("../../../assets/embedding.bin")
 fn main() {
     App::new()
         .add_plugins(DefaultPlugins)
+        .add_plugins(state_manager::GameStatePlugin)
         .add_plugins(util::words::WordPlugin)
         .add_systems(Startup, setup)
         .run();
