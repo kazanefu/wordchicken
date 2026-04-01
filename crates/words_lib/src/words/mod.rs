@@ -13,7 +13,7 @@ impl Word {
             embedding
         }
     }
-    pub fn cosine_similarity(&self,rhs:Self)->f32 {
+    pub fn cosine_similarity(&self,rhs:&Self)->f32 {
         cosine_similarity(&self.embedding, &rhs.embedding)
     }
     pub fn  push_str(&mut self,addition:&str,model_res: &EmbeddingModel){
