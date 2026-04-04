@@ -4,5 +4,5 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-words_lib = {path = "../words_lib"}
+words_lib = {path = "../words_lib",default-features = false}
 rand = "0.10.0"
