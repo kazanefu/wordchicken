@@ -129,7 +129,7 @@ fn on_game(model_res: &EmbeddingModel, words: &[Word]) -> Result<GameResult, OnG
             GuessResult::Out => return Ok(GameResult::Fail),
             GuessResult::Quit => return Ok(GameResult::Clear(score)),
         }
-        println!("debug log: score: {}", score); // for debug
+        words_lib::debug_log!("score: {}", score); // for debug
     }
     Ok(GameResult::Clear(score))
 }
