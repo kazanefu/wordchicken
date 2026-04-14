@@ -1,15 +1,18 @@
 use bevy::prelude::*;
-mod util;
 mod state_manager;
+mod util;
+mod start;
 
 static WORDS_CSV: &str = include_str!("words.csv");
 static EMBEDDINGS_BYTES: &[u8] = include_bytes!("../../../assets/embedding.bin");
 
 fn main() {
-    App::new()
-        .add_plugins(DefaultPlugins)
-        .add_plugins(state_manager::GameStatePlugin)
+    let mut app = App::new();
+    app.add_plugins(DefaultPlugins);
+    bevy::asset::embedded_asset!(app, "fonts/NotoSansJP-Bold.ttf");
+    app.add_plugins(state_manager::GameStatePlugin)
         .add_plugins(util::words::WordPlugin)
+        .add_plugins(start::StartPlugin)
         .add_systems(Startup, setup)
         .run();
 }

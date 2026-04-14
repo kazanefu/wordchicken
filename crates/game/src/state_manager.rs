@@ -4,7 +4,9 @@ use bevy::prelude::*;
 pub enum GameState {
     #[default]
     Start,
-
+    TargetTextSetting,
+    Guess,
+    Result,
 }
 
 pub struct GameStatePlugin;
