@@ -78,7 +78,7 @@ fn press_start_button(
         match interaction {
             Interaction::Pressed => {
                 background_color.0 = Color::srgb(0.5, 0.5, 0.5);
-                game_state.set(GameState::TargetTextSetting);
+                game_state.set(GameState::SetTargetText);
             }
             Interaction::Hovered => {
                 background_color.0 = Color::srgb(0.7, 0.7, 0.7);

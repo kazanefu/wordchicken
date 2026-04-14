@@ -2,6 +2,8 @@ use bevy::prelude::*;
 mod state_manager;
 mod util;
 mod start;
+mod set_target;
+mod guess;
 
 static WORDS_CSV: &str = include_str!("words.csv");
 static EMBEDDINGS_BYTES: &[u8] = include_bytes!("../../../assets/embedding.bin");
@@ -13,6 +15,8 @@ fn main() {
     app.add_plugins(state_manager::GameStatePlugin)
         .add_plugins(util::words::WordPlugin)
         .add_plugins(start::StartPlugin)
+        .add_plugins(set_target::SetTargetTextPlugin)
+        .add_plugins(guess::GuessPlugin)
         .add_systems(Startup, setup)
         .run();
 }

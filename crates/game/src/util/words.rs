@@ -11,7 +11,7 @@ use words_lib::{embedding::embedding_model::EmbeddingModel, save::SavedEmbedding
 // ==========================
 
 #[derive(Resource, Clone)]
-pub struct EmbeddingModelResource(EmbeddingModel);
+pub struct EmbeddingModelResource(pub EmbeddingModel);
 
 #[derive(Resource)]
 pub struct WordsResource(Words);
