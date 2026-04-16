@@ -47,7 +47,7 @@ fn setup_set_target_ui(mut commands: Commands, asset_server: Res<AssetServer>, m
 }
 
 #[derive(Resource, Default)]
-pub struct TargetText(String);
+pub struct TargetText(pub String);
 
 impl TargetText {
     pub fn push_str(&mut self, string: &str) {

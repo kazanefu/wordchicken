@@ -14,7 +14,7 @@ use words_lib::{embedding::embedding_model::EmbeddingModel, save::SavedEmbedding
 pub struct EmbeddingModelResource(pub EmbeddingModel);
 
 #[derive(Resource)]
-pub struct WordsResource(Words);
+pub struct WordsResource(pub Words);
 
 #[derive(Resource)]
 struct EmbeddingTask(Task<SavedEmbeddings>);
@@ -107,7 +107,7 @@ fn start_embedding_task(mut commands: Commands, model_res: Res<EmbeddingModelRes
 // Poll Async Task
 // ==========================
 
-fn poll_embedding_task(mut commands: Commands, mut task_res: Option<ResMut<EmbeddingTask>>) {
+fn poll_embedding_task(mut commands: Commands, task_res: Option<ResMut<EmbeddingTask>>) {
     if let Some(mut task) = task_res {
         use futures_lite::future;
 
@@ -146,7 +146,7 @@ fn load_words() -> Vec<String> {
 
 use rand::prelude::*;
 
-fn random_choices(words: &[String]) -> Vec<String> {
+pub fn random_choices(words: &[Word]) -> Vec<Word> {
     let mut rng = rand::rng();
     words.sample(&mut rng, 4).cloned().collect()
 }
