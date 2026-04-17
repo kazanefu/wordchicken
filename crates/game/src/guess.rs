@@ -403,6 +403,6 @@ fn update_target_text_ui_on_guessing(
     target_text: Res<CurrentGameResult>,
 ) {
     for mut text in query.iter_mut() {
-        **text = format!("Target Text: {}", target_text.0.target_text);
+        **text = format!("Target Sentence: {}", target_text.0.target_text);
     }
 }

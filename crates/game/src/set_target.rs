@@ -82,7 +82,7 @@ fn receive_text(
                 if is_valid_target_input(&target_text.0) {
                     game_state.set(GameState::Guess);
                 } else {
-                    println!("target text:invalid input");
+                    println!("target sentence:invalid input");
                 }
             }
             _ => {
@@ -99,6 +99,6 @@ fn update_target_text_ui(
     target_text: Res<TargetText>,
 ) {
     for mut text in query.iter_mut() {
-        **text = format!("Target Text: {}", target_text.0);
+        **text = format!("Target Sentence: {}", target_text.0);
     }
 }

@@ -65,7 +65,7 @@ fn setup_result_ui(
                 },
                 children![
                     (
-                        Text::new(if !is_clear { "Failed" } else { "" }),
+                        Text::new(if !is_clear { "Game Over" } else { "" }),
                         TextFont {
                             font: font.clone(),
                             font_size: 40.0,
@@ -83,7 +83,7 @@ fn setup_result_ui(
                         TextColor(Color::srgb(0.0, 1.0, 0.0)),
                     ),
                     (
-                        Text::new(format!("Target: {}", target)),
+                        Text::new(format!("Target Sentence: {}", target)),
                         TextFont {
                             font: font.clone(),
                             font_size: 40.0,
