@@ -110,7 +110,7 @@ fn setup_result_ui(
                                     font_size: 40.0,
                                     ..default()
                                 },
-                                TextColor(Color::srgb(1.0, 1.0, 0.0)),
+                                TextColor(Color::srgb(0.9, 1.0, 0.5)),
                             )
                         ]
                     ),

@@ -29,8 +29,7 @@ impl Plugin for GuessPlugin {
                 update_user_ans_ui,
                 get_choose,
                 update_options_ui,
-                push_choosed_word,
-                handle_quit,
+                (push_choosed_word, handle_quit).chain(),
                 handle_break_threshold,
                 press_quit,
                 update_target_text_ui_on_guessing,
@@ -300,15 +299,15 @@ fn press_quit(
     for (interaction, mut background_color) in query.iter_mut() {
         match interaction {
             Interaction::Pressed => {
-                background_color.0 = Color::srgb(0.5, 0.5, 0.5);
+                background_color.0 = Color::srgb(0.0, 0.5, 0.5);
                 choose_event.write(Choosed(QUIT_ID));
                 break;
             }
             Interaction::Hovered => {
-                background_color.0 = Color::srgb(0.7, 0.7, 0.7);
+                background_color.0 = Color::srgb(0.0, 0.7, 0.7);
             }
             Interaction::None => {
-                background_color.0 = Color::srgb(0.9, 0.9, 0.9);
+                background_color.0 = Color::srgb(0.0, 0.9, 0.9);
             }
         }
     }
