@@ -32,22 +32,21 @@ fn setup_result_ui(
     result_list: Res<ResultList>,
     asset_server: Res<AssetServer>,
 ) {
+    let font = asset_server.load("embedded://game/fonts/NotoSansJP-Bold.ttf");
     let default_game_result = GameResult::default();
     let target = &result_list
         .0
         .last()
         .unwrap_or(&default_game_result)
         .target_text;
-    let mut score = *result_list
+    let score = *result_list
         .0
         .last()
         .unwrap_or(&default_game_result)
         .score_transition
         .last()
         .unwrap_or(&0.0);
-    if score >= THRESHOLD {
-        score = 0.0;
-    }
+    let is_clear = score < THRESHOLD;
     commands.spawn((
         DespawnOnExit(GameState::Result),
         Node {
@@ -60,14 +59,62 @@ fn setup_result_ui(
         },
         children![
             (
-                Text::new(format!("{}: score: {}", target, score)),
-                TextFont {
-                    font: asset_server.load("embedded://game/fonts/NotoSansJP-Bold.ttf"),
-                    font_size: 40.0,
+                Node {
+                    flex_direction: FlexDirection::Column,
                     ..default()
                 },
-                TextLayout::new_with_justify(Justify::Left),
-                TextColor::WHITE,
+                children![
+                    (
+                        Text::new(if !is_clear { "Failed" } else { "" }),
+                        TextFont {
+                            font: font.clone(),
+                            font_size: 40.0,
+                            ..default()
+                        },
+                        TextColor(Color::srgb(1.0, 0.0, 0.0)),
+                    ),
+                    (
+                        Text::new(if is_clear { "Clear" } else { "" }),
+                        TextFont {
+                            font: font.clone(),
+                            font_size: 40.0,
+                            ..default()
+                        },
+                        TextColor(Color::srgb(0.0, 1.0, 0.0)),
+                    ),
+                    (
+                        Text::new(format!("Target: {}", target)),
+                        TextFont {
+                            font: font.clone(),
+                            font_size: 40.0,
+                            ..default()
+                        },
+                        TextColor(Color::WHITE),
+                    ),
+                    (
+                        Node::default(),
+                        children![
+                            (
+                                Text::new("Score: "),
+                                TextFont {
+                                    font: font.clone(),
+                                    font_size: 40.0,
+                                    ..default()
+                                },
+                                TextColor(Color::WHITE),
+                            ),
+                            (
+                                Text::new(format!("{}", score)),
+                                TextFont {
+                                    font: font.clone(),
+                                    font_size: 40.0,
+                                    ..default()
+                                },
+                                TextColor(Color::srgb(1.0, 1.0, 0.0)),
+                            )
+                        ]
+                    ),
+                ]
             ),
             (
                 Button,
