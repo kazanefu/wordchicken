@@ -11,7 +11,7 @@ impl Plugin for SetTargetTextPlugin {
                 Update,
                 (
                     receive_text.run_if(in_state(GameState::SetTargetText)),
-                    update_target_text_ui.run_if(not(in_state(GameState::Start))),
+                    update_target_text_ui.run_if(in_state(GameState::SetTargetText)),
                 ),
             );
     }

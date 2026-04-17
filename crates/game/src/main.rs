@@ -18,6 +18,7 @@ fn main() {
         .add_plugins(start::StartPlugin)
         .add_plugins(set_target::SetTargetTextPlugin)
         .add_plugins(guess::GuessPlugin)
+        .add_plugins(result::ResultPlugin)
         .add_systems(Startup, setup)
         .run();
 }
